@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug point_cloud_saver",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/install/point_cloud_saver/lib/point_cloud_saver/point_cloud_saver",
+            "args": [
+                "--ros-args",
+                "-p",
+                "topic_name:=/TPCK_LIDAR_TOP_CENTER",
+                // "-p",
+                // "output_dir:=/home/albertl/albertl/ros2_customize_node/point_cloud_saver/saved",
+                "-p", "qos_history:=10",
+                "-p", "qos_reliability:=best_effort",  //  best_effort or reliable
+                "-p", "qos_durability:=volatile"   //   or transient_local or volattle
+            ],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "clean build point_cloud_saver", // This ensures the package is built before debugging
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
